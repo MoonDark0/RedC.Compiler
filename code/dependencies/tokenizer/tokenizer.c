@@ -23,7 +23,7 @@ struct token CloseToken(int first, int last, const char* str,enum Types enumType
     return NewToken;
 }
 
-struct token* Insert(struct token* Tokenlist,int* TokenNum,int* MaxToken,struct token add){
+static struct token* Insert(struct token* Tokenlist,int* TokenNum,int* MaxToken,struct token add){
     Tokenlist[*TokenNum]=add;
     *TokenNum=*TokenNum+1;
     if(*TokenNum==*MaxToken){
@@ -206,6 +206,14 @@ struct token* Tokenize(char* str,long long lenght,int* TokenListLenght){
                 Tokens=Insert(Tokens,&TokenNum,&MaxTokens,Add);
                 pointer+=1;
             break;
+
+                //POINTER
+            case '*':
+                struct token Pointer={NULL,0,pointer};
+                Tokens=Insert(Tokens,&TokenNum,&MaxTokens,Pointer);
+                pointer+=1;
+                break;
+
         //TODO
 
         /*
@@ -226,11 +234,7 @@ struct token* Tokenize(char* str,long long lenght,int* TokenListLenght){
             //code
             break;
 
-        //TIMES/POINTER
-        case '*':
-            //code
-            break;
-
+        
         //MOD
         case '%':
             //code
@@ -288,14 +292,12 @@ struct token* Tokenize(char* str,long long lenght,int* TokenListLenght){
 
         
         default:
-        printf("died");
             struct token TextToken;
             TextToken=CreateText(&pointer,lenght,str);
             if(TextToken.type==text){
                 SubTextToken(&TextToken);
             }
             Tokens=Insert(Tokens,&TokenNum,&MaxTokens,TextToken);
-            printf("didn'tdie");
             break;
         }
     }

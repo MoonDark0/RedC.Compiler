@@ -98,6 +98,10 @@ void printToken(struct token* TokenList,int TokenLen){
         case subTextReturn:
             printf("Return ");
             break;
+
+        case subTextAssembly:
+            printf("Assembly ");
+            break;
         }
         
 
@@ -128,6 +132,7 @@ int main(int argc, char const *argv[])
     
     File=openfile(argv[1],&FileLen);
     struct token* TokenList=Tokenize(File,FileLen,&TokenLen);
+    free(File);
     printToken(TokenList,TokenLen);
 
     

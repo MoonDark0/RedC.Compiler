@@ -44,6 +44,15 @@ void InitializeTokenChecking(){
 
     Type=subTextTypeof;
     InsertLiteral("typeof",sizeof("typeof")-1,&HashComparison,Type);
+
+    Type=subTextAssembly;
+    InsertLiteral("asm",sizeof("asm")-1,&HashComparison,Type);
+
+    Type=subTextNew;
+    InsertLiteral("new",sizeof("new")-1,&HashComparison,Type);
+
+    Type=subTextNoWarn;
+    InsertLiteral("nowarn",sizeof("nowarn")-1,&HashComparison,Type);
     return;
 }
 

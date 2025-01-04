@@ -20,6 +20,7 @@ enum Types{
     graterorequal,
     leftshift,
     add,
+    pointer,
 
 
 
@@ -39,8 +40,12 @@ enum Types{
     subTextSwitch,
     subTextCase,
     subTextDefault,
-    subTextTypeof
+    subTextTypeof,
+    subTextNew,
+    subTextAssembly,
+    subTextNoWarn
 };
+
 struct token{
     char* value;
     int wordsize;
